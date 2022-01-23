@@ -14,7 +14,7 @@ github_repo: "notes-of-a-nerd"
 
 # OPTIONAL: override baseurl and url if using a custom domain
 # Note: leave out the trailing / from this value. 
-url: "https://GeileHirnbude.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.geile-hirnbude.de" # the base hostname & protocol for your site, e.g. http://example.com
 
 ###########################################################
 #########  Special Instructions for baseurl ###############
