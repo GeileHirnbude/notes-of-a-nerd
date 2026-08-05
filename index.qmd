@@ -1,0 +1,15 @@
+---
+title: "My Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: table
+  categories: true
+---
+
+This is the homepage. New posts go in the `posts/` folder and appear here automatically.
+
+## What you can write
+
+- **`posts/*.qmd`** — plain Markdown posts (same `YYYY-MM-DD`-style frontmatter, folder-less)
+- **`posts/*.ipynb`** — Jupyter notebooks, rendered natively (no conversion pipeline needed)

@@ -1,0 +1,28 @@
+---
+title: "Example Markdown Post"
+author: "Lutz"
+date: "2026-08-06"
+categories: [markdown]
+---
+
+This is a plain Quatro Markdown post. Title, author, date and categories go in the YAML frontmatter at the top.
+
+```python
+print("Code blocks render with syntax highlighting")
+```
+
+Include math inline like $e^{i\pi} + 1 = 0$ or as a display equation:
+
+$$ \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2} $$
+
+And a citation {% cite buch2026example %} — handled natively by Quarto, no jekyll-scholar needed.
+
+## Callout boxes
+
+::: {.callout-note}
+This is how you make a note/tip/warning callout — much simpler than fastpages' includes.
+:::
+
+::: {.callout-tip}
+Quarto handles this natively.
+:::

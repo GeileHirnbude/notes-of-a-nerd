@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+A simple blog created with Quarto.
+
+Edit this file (`about.qmd`) to change the about page, and adjust links in `_quarto.yml`.

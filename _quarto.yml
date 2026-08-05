@@ -1,0 +1,28 @@
+project:
+  type: website
+
+# Site-wide settings
+website:
+  title: "My Blog"
+  description: "A simple blog hosted on GitHub Pages."
+  site-url: https://geilehirnbude.github.io/notes-of-a-nerd/
+  repo-url: https://github.com/GeileHirnbude/notes-of-a-nerd
+  navbar:
+    title: "My Blog"
+    right:
+      - text: "About"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/GeileHirnbude
+  page-footer:
+    center: "Powered by Quarto"
+
+# Default HTML format
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: show
+
+# Bibliography (citations) is built-in; no extra plugin needed
+bibliography: references.bib
