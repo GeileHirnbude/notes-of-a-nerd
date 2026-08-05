@@ -9,6 +9,8 @@ listing:
 
 This is the homepage. New posts go in the `posts/` folder and appear here automatically.
 
+> Ramblings of a lover of language, algorithms, and nature.
+
 ## What you can write
 
 - **`posts/*.qmd`** — plain Markdown posts (same `YYYY-MM-DD`-style frontmatter, folder-less)
