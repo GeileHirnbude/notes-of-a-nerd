@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://blog.geile-hirnbude.de/markdown/2020/01/14/test-markdown-post.html</loc>
-<lastmod>2020-01-14T00:00:00-06:00</lastmod>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/jupyter/2020/02/20/test.html</loc>
-<lastmod>2020-02-20T00:00:00-06:00</lastmod>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/2022/01/22/Test-post.html</loc>
-<lastmod>2022-01-22T00:00:00-06:00</lastmod>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/about/</loc>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/</loc>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/search/</loc>
-</url>
-<url>
-<loc>https://blog.geile-hirnbude.de/categories/</loc>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://geilehirnbude.github.io/notes-of-a-nerd/index.html</loc>
+    <lastmod>2026-08-05T22:41:44.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://geilehirnbude.github.io/notes-of-a-nerd/posts/2026-08-06-example-notebook.html</loc>
+    <lastmod>2026-08-05T22:41:44.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://geilehirnbude.github.io/notes-of-a-nerd/about.html</loc>
+    <lastmod>2026-08-05T22:41:44.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://geilehirnbude.github.io/notes-of-a-nerd/BLOG-CHEATSHEET.html</loc>
+    <lastmod>2026-08-05T22:41:44.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://geilehirnbude.github.io/notes-of-a-nerd/posts/2026-08-06-example-markdown-post.html</loc>
+    <lastmod>2026-08-05T22:41:44.927Z</lastmod>
+  </url>
 </urlset>

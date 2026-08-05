@@ -1,1 +1,1 @@
-Sitemap: https://blog.geile-hirnbude.de/sitemap.xml
+Sitemap: https://geilehirnbude.github.io/notes-of-a-nerd/sitemap.xml
