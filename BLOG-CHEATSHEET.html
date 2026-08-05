@@ -156,20 +156,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#blog-management-cheat-sheet" id="toc-blog-management-cheat-sheet" class="nav-link active" data-scroll-target="#blog-management-cheat-sheet">Blog Management Cheat Sheet</a>
   <ul class="collapse">
-  <li><a href="#the-three-ways-to-write-a-post" id="toc-the-three-ways-to-write-a-post" class="nav-link" data-scroll-target="#the-three-ways-to-write-a-post">1. The three ways to write a post</a></li>
-  <li><a href="#writing-a-plain-markdown-post-simplest" id="toc-writing-a-plain-markdown-post-simplest" class="nav-link" data-scroll-target="#writing-a-plain-markdown-post-simplest">2. Writing a plain Markdown post (simplest)</a>
+  <li><a href="#how-posts-work" id="toc-how-posts-work" class="nav-link" data-scroll-target="#how-posts-work">1. How posts work</a></li>
+  <li><a href="#writing-a-markdown-post-.qmd" id="toc-writing-a-markdown-post-.qmd" class="nav-link" data-scroll-target="#writing-a-markdown-post-.qmd">2. Writing a Markdown post (<code>.qmd</code>)</a>
   <ul class="collapse">
-  <li><a href="#common-frontmatter-keys" id="toc-common-frontmatter-keys" class="nav-link" data-scroll-target="#common-frontmatter-keys">Common frontmatter keys</a></li>
-  <li><a href="#useful-markdown-bits" id="toc-useful-markdown-bits" class="nav-link" data-scroll-target="#useful-markdown-bits">Useful Markdown bits</a></li>
+  <li><a href="#useful-quarto-markdown" id="toc-useful-quarto-markdown" class="nav-link" data-scroll-target="#useful-quarto-markdown">Useful Quarto Markdown</a></li>
   </ul></li>
   <li><a href="#writing-a-notebook-post-.ipynb" id="toc-writing-a-notebook-post-.ipynb" class="nav-link" data-scroll-target="#writing-a-notebook-post-.ipynb">3. Writing a notebook post (<code>.ipynb</code>)</a></li>
-  <li><a href="#writing-a-word-post-.docx" id="toc-writing-a-word-post-.docx" class="nav-link" data-scroll-target="#writing-a-word-post-.docx">4. Writing a Word post (<code>.docx</code>)</a></li>
-  <li><a href="#preview-locally" id="toc-preview-locally" class="nav-link" data-scroll-target="#preview-locally">5. Preview locally</a></li>
-  <li><a href="#publishing-deploying" id="toc-publishing-deploying" class="nav-link" data-scroll-target="#publishing-deploying">6. Publishing / deploying</a></li>
-  <li><a href="#current-git-state-pending-work" id="toc-current-git-state-pending-work" class="nav-link" data-scroll-target="#current-git-state-pending-work">7. Current git state &amp; PENDING work ⚠️</a></li>
-  <li><a href="#editing-the-site-itself-configsettings" id="toc-editing-the-site-itself-configsettings" class="nav-link" data-scroll-target="#editing-the-site-itself-configsettings">8. Editing the site itself (config/settings)</a></li>
-  <li><a href="#optional-features-config-flags" id="toc-optional-features-config-flags" class="nav-link" data-scroll-target="#optional-features-config-flags">9. Optional features (config flags)</a></li>
-  <li><a href="#gotchas-troubleshooting" id="toc-gotchas-troubleshooting" class="nav-link" data-scroll-target="#gotchas-troubleshooting">10. Gotchas / troubleshooting</a></li>
+  <li><a href="#preview-locally" id="toc-preview-locally" class="nav-link" data-scroll-target="#preview-locally">4. Preview locally</a></li>
+  <li><a href="#publishing-deploying" id="toc-publishing-deploying" class="nav-link" data-scroll-target="#publishing-deploying">5. Publishing / deploying</a></li>
+  <li><a href="#domain-https" id="toc-domain-https" class="nav-link" data-scroll-target="#domain-https">6. Domain &amp; HTTPS</a></li>
+  <li><a href="#editing-the-site-itself" id="toc-editing-the-site-itself" class="nav-link" data-scroll-target="#editing-the-site-itself">7. Editing the site itself</a></li>
+  <li><a href="#optional-features-config" id="toc-optional-features-config" class="nav-link" data-scroll-target="#optional-features-config">8. Optional features (config)</a></li>
+  <li><a href="#gotchas-troubleshooting" id="toc-gotchas-troubleshooting" class="nav-link" data-scroll-target="#gotchas-troubleshooting">9. Gotchas / troubleshooting</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -182,64 +180,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="blog-management-cheat-sheet" class="level1">
 <h1>Blog Management Cheat Sheet</h1>
-<p>Cheat sheet for managing this blog. It runs on <strong>fastpages</strong> (a Jekyll 4.1 template from fast.ai) and is published with <strong>GitHub Actions to GitHub Pages</strong>.</p>
-<p>Live site: https://GeileHirnbude.github.io/notes-of-a-nerd/</p>
+<p>Cheat sheet for managing this blog. It runs on <strong>Quarto</strong> (website project) and is hosted on <strong>GitHub Pages</strong> with GitHub Actions.</p>
+<p>Live sites: - https://geilehirnbude.github.io/notes-of-a-nerd/ (GitHub Pages URL) - https://blog.geile-hirnbude.de/ (custom domain — requires DNS to be configured, see §6)</p>
 <hr>
-<section id="the-three-ways-to-write-a-post" class="level2">
-<h2 class="anchored" data-anchor-id="the-three-ways-to-write-a-post">1. The three ways to write a post</h2>
-<p>The repo converts sources in <code>_notebooks/</code> and <code>_word/</code> into finished posts in <code>_posts/</code>.</p>
+<section id="how-posts-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-posts-work">1. How posts work</h2>
+<p>There is <strong>no build/conversion pipeline</strong>. Quarto renders Markdown (<code>.qmd</code>) and Jupyter notebooks (<code>.ipynb</code>) directly. You simply drop files into the <code>posts/</code> folder:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>You write/edit here</th>
-<th>Converted into</th>
-<th>Best for</th>
+<th>Rendered as</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>_notebooks/*.ipynb</code> (Jupyter)</td>
-<td><code>_posts/*.md</code></td>
-<td>Data science, charts, code with outputs</td>
+<td><code>posts/*.qmd</code></td>
+<td>A normal HTML post</td>
 </tr>
 <tr class="even">
-<td><code>_word/*.docx</code> (Word)</td>
-<td><code>_posts/*.md</code></td>
-<td>Long-form writing</td>
-</tr>
-<tr class="odd">
-<td><code>_posts/*.md</code> (directly)</td>
-<td>(used as-is)</td>
-<td>Simple text posts</td>
+<td><code>posts/*.ipynb</code></td>
+<td>An HTML post with the notebook rendered natively (executed if a kernel is available)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Filename convention (mandatory):</strong> <code>YYYY-MM-DD-slug.ext</code> e.g.&nbsp;<code>_posts/2023-05-14-hello-world.md</code> or <code>_notebooks/2023-05-14-my-analysis.ipynb</code></p>
+<p><strong>No filename convention is enforced</strong> (a <code>YYYY-MM-DD-</code> prefix is a nice habit for ordering). New files in <code>posts/</code> appear on the homepage automatically via the <code>listing</code> on <code>index.qmd</code>.</p>
 <blockquote class="blockquote">
-<p>⚠️ Never hand-edit files that start with <code>### THIS FILE WAS AUTOGENERATED! DO NOT EDIT!</code>. Those are converted from notebooks — edit the <code>.ipynb</code> source instead.</p>
+<p>Unlike fastpages, there is no <code>_notebooks/ → _posts/</code> step, no “DO NOT EDIT / autogenerated” files, and no separate Word pipeline.</p>
 </blockquote>
 <hr>
 </section>
-<section id="writing-a-plain-markdown-post-simplest" class="level2">
-<h2 class="anchored" data-anchor-id="writing-a-plain-markdown-post-simplest">2. Writing a plain Markdown post (simplest)</h2>
-<p>Create <code>_posts/YYYY-MM-DD-slug.md</code> with frontmatter at the top:</p>
+<section id="writing-a-markdown-post-.qmd" class="level2">
+<h2 class="anchored" data-anchor-id="writing-a-markdown-post-.qmd">2. Writing a Markdown post (<code>.qmd</code>)</h2>
+<p>Create <code>posts/my-post.qmd</code> with YAML frontmatter at the top:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span><span class="kw">:</span><span class="at"> post</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> A short subtitle shown under the title.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My Great Post</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">tech</span><span class="kw">]</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> images/logo.png</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">comments</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then write the body with regular Markdown. Start with a <code># Heading</code>.</p>
-<section id="common-frontmatter-keys" class="level3">
-<h3 class="anchored" data-anchor-id="common-frontmatter-keys">Common frontmatter keys</h3>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Great Post"</span><span class="co">        # quote it if it contains : ~ *</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Lutz</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2026-08-06</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">tech</span><span class="kw">]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"A short subtitle."</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Common frontmatter keys:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -254,140 +239,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><code>title</code></td>
-<td>Post title. <strong>Quote it</strong> if it contains <code>:</code> <code>~</code> <code>*</code> (e.g.&nbsp;<code>title: "Monge-Elkan: a story"</code>), otherwise Jekyll may crash.</td>
+<td>Post title. Quote it if it contains <code>:</code>, <code>~</code>, <code>*</code>.</td>
 </tr>
 <tr class="even">
-<td><code>description</code></td>
-<td>Subtitle / blurb under the title</td>
+<td><code>author</code></td>
+<td>Author name</td>
 </tr>
 <tr class="odd">
+<td><code>date</code></td>
+<td>Publish date</td>
+</tr>
+<tr class="even">
 <td><code>categories: [a, b]</code></td>
-<td>This is the “tags” system → shows under <code>/categories/</code></td>
-</tr>
-<tr class="even">
-<td><code>toc: true</code></td>
-<td>Auto table of contents</td>
+<td>Tags/categories (listed on the homepage and filtered)</td>
 </tr>
 <tr class="odd">
-<td><code>comments: true</code></td>
-<td>Enable comments (utterances)</td>
+<td><code>description</code></td>
+<td>Blurb</td>
 </tr>
 <tr class="even">
-<td><code>image: images/x.png</code></td>
-<td>Preview/social image (show it with <code>show_image: true</code> in config)</td>
+<td><code>image: file.png</code></td>
+<td>Preview/social image</td>
 </tr>
 <tr class="odd">
-<td><code>hide: true</code></td>
-<td>Hide from home + tags pages (poor-man’s draft); URL still resolves</td>
-</tr>
-<tr class="even">
-<td><code>search_exclude: true</code></td>
-<td>Exclude from site search</td>
-</tr>
-<tr class="odd">
-<td><code>sticky_rank: N</code></td>
-<td>Pin post to top of the home list</td>
-</tr>
-<tr class="even">
-<td><code>author: Name</code></td>
-<td>Author shown in post meta</td>
-</tr>
-<tr class="odd">
-<td><code>modified_date</code></td>
-<td>Renders “~ date” next to publish date</td>
-</tr>
-<tr class="even">
-<td><code>permalink: /custom/</code></td>
-<td>Override the URL</td>
+<td><code>draft: true</code></td>
+<td>Hide drafts during local preview (not published)</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="useful-markdown-bits" class="level3">
-<h3 class="anchored" data-anchor-id="useful-markdown-bits">Useful Markdown bits</h3>
+<section id="useful-quarto-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="useful-quarto-markdown">Useful Quarto Markdown</h3>
 <ul>
-<li>Images: <code>![]({{ site.baseurl }}/images/logo.png "caption")</code></li>
-<li>Video: <code>{% include video.html url="https://..." %}</code></li>
-<li>Callout boxes:
-<ul>
-<li><code>{% include alert.html text="..." %}</code></li>
-<li><code>{% include info.html text="..." %}</code></li>
-<li><code>{% include note.html content="..." %}</code>, <code>tip.html</code>, <code>warning.html</code>, <code>important.html</code></li>
-</ul></li>
-<li>YouTube: <code>{% include youtube.html %}</code></li>
-<li>Twitter: <code>{% twitter &lt;url&gt; %}</code></li>
-<li>Footnote: <code>{% fn 15 %}</code> in text, <code>* {{ "text" | fndetail: 15 }}</code> at the end</li>
+<li><p><strong>Code</strong> with syntax highlighting: triple-backtick fenced blocks (Python, R, bash, JS, …)</p></li>
+<li><p><strong>Math</strong>: inline <code>$x^2$</code>, display <code>$$ \int  … $$</code> (built-in KaTeX/MathJax)</p></li>
+<li><p><strong>Callouts</strong> (much simpler than fastpages’ includes):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A note/tip/warning/important callout.</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Images</strong>: <code>![](myimage.png)</code> — place images in the repo (e.g.&nbsp;an <code>images/</code> folder or next to the post)</p></li>
+<li><p><strong>Citations</strong>: <code>{% cite buch2026example %}</code> and the bibliography from <code>references.bib</code></p>
+<pre><code>{% cite buch2026example %}
+{% bibliography --cited %}</code></pre></li>
 </ul>
 <hr>
 </section>
 </section>
 <section id="writing-a-notebook-post-.ipynb" class="level2">
 <h2 class="anchored" data-anchor-id="writing-a-notebook-post-.ipynb">3. Writing a notebook post (<code>.ipynb</code>)</h2>
-<p>Put a Jupyter notebook in <code>_notebooks/YYYY-MM-DD-slug.ipynb</code>.</p>
-<p><strong>Cell 0 (top markdown cell)</strong> carries the metadata as <code>-</code> dashed lines:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># My post title</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Short subtitle / description.</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>toc: true</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>badges: false</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>comments: true</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>categories: <span class="co">[</span><span class="ot">science</span><span class="co">]</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>image: images/chart-preview.png</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Code cell flags</strong> (first line of a code cell): - <code>#hide</code> — hide input and output - <code>#hide_input</code> — hide input only (keeps output) - <code>#collapse-hide</code> — collapsible, collapsed - <code>#collapse-show</code> — collapsible, expanded</p>
-<p><strong>Images in notebooks</strong> are referenced relative to the notebook and auto-copied to <code>images/copied_from_nb/</code> at build time. Do <strong>not</strong> hand-place images in <code>images/copied_from_nb/</code> — they can be deleted on rebuild.</p>
-<hr>
-</section>
-<section id="writing-a-word-post-.docx" class="level2">
-<h2 class="anchored" data-anchor-id="writing-a-word-post-.docx">4. Writing a Word post (<code>.docx</code>)</h2>
-<p>Put a <code>.docx</code> file in <code>_word/YYYY-MM-DD-slug.docx</code>. It’s converted with pandoc. Extracted images land in <code>assets/img/&lt;post-basename&gt;/media</code>.</p>
+<p>Drop a Jupyter notebook into <code>posts/</code> (e.g.&nbsp;<code>posts/my-analysis.ipynb</code>). Quarto renders it in place — code cells execute if a Python/Jupyter kernel is installed; outputs and figures are embedded.</p>
+<p>Working with notebooks: - Execute/check locally: <code>quarto preview</code> (renders notebooks with a kernel) - Use standard Jupyter features; no special cell flags or frontmatter required. - Preview images/<code>matplotlib</code> output appear automatically.</p>
 <hr>
 </section>
 <section id="preview-locally" class="level2">
-<h2 class="anchored" data-anchor-id="preview-locally">5. Preview locally</h2>
-<p>Everything runs in Docker.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> server            <span class="co"># live preview at http://127.0.0.1:4000  (kills other containers first)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> server-detached   <span class="co"># same, but in background</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> convert           <span class="co"># ONLY convert notebooks + Word -&gt; _posts/*.md</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> quick-build       <span class="co"># cached rebuild</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build             <span class="co"># full no-cache rebuild</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> stop              <span class="co"># stop containers</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> bash-jekyll       <span class="co"># shell into the Jekyll container</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> bash-nb           <span class="co"># shell into the converter container</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<h2 class="anchored" data-anchor-id="preview-locally">4. Preview locally</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview            <span class="co"># live preview, auto-reloads in the browser</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render             <span class="co"># build the site into _site/ (optional)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Requires Quarto installed: https://quarto.org/docs/get-started/</p>
 <ul>
-<li>The site does <strong>not</strong> auto-refresh in the browser — refresh manually.</li>
-<li>Jupyter is also served at <code>http://127.0.0.1:8080</code> (no password) when containers run.</li>
-<li><code>make convert</code> regenerates the <code>_posts/*.md</code> files from your notebooks before you preview.</li>
+<li><code>quarto preview</code> rebuilds on save and refreshes the browser.</li>
+<li>Output goes to <code>_site/</code> (git-ignored).</li>
+<li>Notebooks execute if Jupyter/a kernel is present.</li>
 </ul>
-<p><strong>No Docker, no problem:</strong> <code>bundle install &amp;&amp; bundle exec jekyll serve</code> (needs local Ruby + the gem set).</p>
 <hr>
 </section>
 <section id="publishing-deploying" class="level2">
-<h2 class="anchored" data-anchor-id="publishing-deploying">6. Publishing / deploying</h2>
-<p>Deployment is automatic via GitHub Actions — <strong>you only need to <code>git push</code> to <code>master</code>.</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add new post"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin master</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>On every push to <code>master</code>, the <code>ci.yaml</code> workflow: 1. Converts notebooks + Word docs to posts 2. Builds the Jekyll site 3. Deploys the generated <code>_site/</code> to the <code>gh-pages</code> branch → site goes live (usually takes a minute or two, watch the “Actions” tab)</p>
-<p>Pull requests only build/test — they do <strong>not</strong> deploy.</p>
-<blockquote class="blockquote">
-<p>The workflow needs a GitHub repo secret called <code>SSH_DEPLOY_KEY</code> (a deploy key with write access to the repo). If pushes never trigger a deploy, check that this secret exists in <strong>Settings → Secrets</strong>.</p>
-</blockquote>
+<h2 class="anchored" data-anchor-id="publishing-deploying">5. Publishing / deploying</h2>
+<p>Publishing is just a git push to <strong><code>main</code></strong>. No build on your machine needed.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Add new post"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On every push to <code>main</code>, the GitHub Action (<code>.github/workflows/publish.yml</code>): 1. Checks out the repo 2. Sets up Quarto 3. Renders the site and publishes it to the <code>gh-pages</code> branch → the site updates live (usually under a minute) 4. Watch progress in the repo’s <strong>Actions</strong> tab</p>
+<p>No deploy key or special secrets are required (unlike fastpages’ <code>SSH_DEPLOY_KEY</code>).</p>
 <hr>
 </section>
-<section id="current-git-state-pending-work" class="level2">
-<h2 class="anchored" data-anchor-id="current-git-state-pending-work">7. Current git state &amp; PENDING work ⚠️</h2>
-<p>The live site is running the <strong>original template</strong> — your real posts were <strong>never committed or deployed</strong>:</p>
+<section id="domain-https" class="level2">
+<h2 class="anchored" data-anchor-id="domain-https">6. Domain &amp; HTTPS</h2>
 <ul>
-<li>Uncommitted real posts: <code>_notebooks/2021-02-27-Computer-Science.ipynb</code>, <code>_notebooks/2021-02-27-Monge-Elkan-metric.ipynb</code> (and their generated <code>_posts/*.md</code>)</li>
-<li>Modified but uncommitted: <code>Gemfile</code>, <code>Gemfile.lock</code>, <code>_config.yml</code> (the <strong>jekyll-scholar</strong> citation plugin was added)</li>
-<li>There are stray <code>*-Copy1.md</code> duplicate posts that will render as duplicate blog entries — delete them.</li>
+<li><strong>Default URL:</strong> <code>https://geilehirnbude.github.io/notes-of-a-nerd/</code> — always works.</li>
+<li><strong>Custom domain:</strong> <code>blog.geile-hirnbude.de</code> is set in <strong>Settings → Pages → Custom domain</strong>.
+<ul>
+<li>⚠️ For it to work, DNS must point the subdomain to GitHub: <code>CNAME blog.geile-hirnbude.de → geilehirnbude.github.io</code> (set this at your domain provider, e.g.&nbsp;DomainFactory — CNAME target must be the bare hostname <code>geilehirnbude.github.io</code>, <strong>no</strong> <code>https://</code> and <strong>no</strong> <code>/notes-of-a-nerd/</code> path).</li>
+<li>Until DNS resolves, the <code>github.io</code> URL is the working fallback.</li>
+</ul></li>
+<li><strong>HTTPS:</strong> after DNS is verified, tick <strong>Enforce HTTPS</strong> in Pages settings.</li>
 </ul>
-<p><strong>Suggested first step:</strong> commit these with <code>git add -A &amp;&amp; git commit -m "Adding content and scholar plugin" &amp;&amp; git push origin master</code>, then check Actions.</p>
 <hr>
 </section>
-<section id="editing-the-site-itself-configsettings" class="level2">
-<h2 class="anchored" data-anchor-id="editing-the-site-itself-configsettings">8. Editing the site itself (config/settings)</h2>
-<p>Main settings live in <code>_config.yml</code> (site title, description, social links, pagination, math, analytics). Things that are still default/fastpages branding — likely want changing:</p>
+<section id="editing-the-site-itself" class="level2">
+<h2 class="anchored" data-anchor-id="editing-the-site-itself">7. Editing the site itself</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -401,53 +340,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>Site <code>title: fastpages</code>, <code>description</code></td>
-<td><code>_config.yml</code></td>
+<td>Site title, description, navbar, theme</td>
+<td><code>_quarto.yml</code> (<code>website:</code> block)</td>
 </tr>
 <tr class="even">
-<td>Social links (<code>twitter: fastdotai</code>, <code>github: fastai</code>)</td>
-<td><code>_config.yml</code> → <code>minima.social_links</code></td>
+<td>Homepage &amp; post listing</td>
+<td><code>index.qmd</code> (the <code>listing</code> block pulls in <code>posts/</code>)</td>
 </tr>
 <tr class="odd">
-<td>Home page marketing copy</td>
-<td><code>index.html</code></td>
-</tr>
-<tr class="even">
 <td>About page</td>
-<td><code>_pages/about.md</code></td>
+<td><code>about.qmd</code></td>
+</tr>
+<tr class="even">
+<td>Site URL used in metadata</td>
+<td><code>_quarto.yml</code> → <code>website.site-url</code> (should match the live URL)</td>
 </tr>
 <tr class="odd">
-<td><code>baseurl</code> must match</td>
-<td><code>_config.yml</code> and <code>_action_files/settings.ini</code> (both <code>/notes-of-a-nerd</code>)</td>
+<td>Bibliography / citations</td>
+<td><code>references.bib</code></td>
 </tr>
 </tbody>
 </table>
-<p>Other pages: <code>_pages/about.md</code>, <code>_pages/tags.html</code> (→ <code>/categories/</code>), <code>_pages/search.html</code> (→ <code>/search/</code>), <code>_pages/404.html</code>.</p>
 <hr>
 </section>
-<section id="optional-features-config-flags" class="level2">
-<h2 class="anchored" data-anchor-id="optional-features-config-flags">9. Optional features (config flags)</h2>
+<section id="optional-features-config" class="level2">
+<h2 class="anchored" data-anchor-id="optional-features-config">8. Optional features (config)</h2>
 <ul>
-<li><p><strong>Math (KaTeX/MathJax):</strong> set <code>use_math: true</code> in <code>_config.yml</code>. Delimiters: <code>$$...$$</code>, <code>$...$</code></p></li>
-<li><p><strong>Search:</strong> built-in lunr search at <code>/search/</code></p></li>
-<li><p><strong>RSS:</strong> auto at <code>/feed.xml</code>; <code>sitemap.xml</code> and <code>robots.txt</code> auto-generated</p></li>
-<li><p><strong>Comments:</strong> add <code>comments: true</code> to a post — requires the <strong>utterances</strong> GitHub App installed on the repo</p></li>
-<li><p><strong>Citations:</strong> jekyll-scholar is installed (uses <code>_bibliography/references.bib</code>). Usage:</p>
-<pre><code>{% cite buch2020metric %}
-{% bibliography --cited %}</code></pre>
-<p>Add a <code>scholar:</code> block to <code>_config.yml</code> to pick a CSL style (e.g.&nbsp;<code>acm-sig-proceedings</code>, files already at repo root).</p></li>
+<li><strong>Math:</strong> built-in — no flag needed. Delimiters <code>$...$</code>, <code>$$...$$</code>.</li>
+<li><strong>Search:</strong> automatic on the site (Quarto adds a search box to the navbar).</li>
+<li><strong>RSS / sitemap:</strong> auto-generated (<code>sitemap.xml</code>, feed in <code>site_libs</code>).</li>
+<li><strong>Comments:</strong> not configured by default. Add e.g.&nbsp;<strong>utterances</strong> or <strong>giscus</strong> in the <code>website</code> config or a template as needed.</li>
+<li><strong>Theme</strong> (<code>format.html.theme</code>): switch e.g.&nbsp;<code>cosmo</code> to another Bootswatch theme. See https://quarto.org/docs/output-formats/html-themes.html</li>
 </ul>
 <hr>
 </section>
 <section id="gotchas-troubleshooting" class="level2">
-<h2 class="anchored" data-anchor-id="gotchas-troubleshooting">10. Gotchas / troubleshooting</h2>
+<h2 class="anchored" data-anchor-id="gotchas-troubleshooting">9. Gotchas / troubleshooting</h2>
 <ul>
-<li><strong>Malformed YAML frontmatter</strong> → build fails with <code>strict_front_matter</code>. Quote any title containing <code>:</code>, <code>~</code>, <code>*</code>.</li>
-<li><strong>jekyll-scholar in CI:</strong> the CI workflow pulls upstream <code>fastai/fastpages-jekyll</code> from Docker Hub, which does <strong>not</strong> include jekyll-scholar. If CI builds fail on “jekyll-scholar not installed”, the workflow/<code>_config.yml</code> needs adjusting (e.g.&nbsp;a custom Docker image built with it, or remove the plugin).</li>
-<li><strong>future: true</strong> is set in config, so a future-dated post is still published — you can’t hide a post by dating it in the future; use <code>hide: true</code> instead.</li>
-<li><strong>Duplicate posts:</strong> leftover <code>*-Copy1.md</code> files render as real posts — delete them.</li>
-<li><strong>Do not edit <code>images/copied_from_nb/</code></strong> — auto-managed at build time.</li>
-<li><strong>fastpages is archived upstream</strong> — no new updates will come. It still works fine, but plan if you want long-term migration.</li>
+<li><strong>Quote titles</strong> containing <code>:</code>, <code>~</code>, <code>*</code> to avoid YAML parse errors.</li>
+<li><strong>Drafts:</strong> use <code>draft: true</code> in frontmatter — they render only during <code>quarto preview</code>, not in the published site.</li>
+<li><strong>Broken custom domain:</strong> if <code>blog.geile-hirnbude.de</code> doesn’t load, it’s a DNS problem (see §6), not the build. The <code>github.io</code> URL should still work.</li>
+<li><strong>Notebooks not executing:</strong> needs a Jupyter/Python kernel available where it renders (locally). GitHub Actions CI can still render notebooks that were saved with output, or you can configure a Python setup step in the workflow if needed.</li>
+<li><strong><code>_site/</code> is git-ignored</strong> — never commit build output.</li>
 </ul>
 
 
