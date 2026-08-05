@@ -3,12 +3,12 @@ project:
 
 # Site-wide settings
 website:
-  title: "My Blog"
-  description: "A simple blog hosted on GitHub Pages."
-  site-url: https://geilehirnbude.github.io/notes-of-a-nerd/
+  title: "Notes of a nerd"
+  description: "Ramblings of a lover of language, algorithms, and nature."
+  site-url: https://blog.geile-hirnbude.de/
   repo-url: https://github.com/GeileHirnbude/notes-of-a-nerd
   navbar:
-    title: "My Blog"
+    title: "Notes of a nerd"
     right:
       - text: "About"
         href: about.qmd
