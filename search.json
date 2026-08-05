@@ -2,14 +2,14 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "My Blog",
+    "title": "Notes of a nerd",
     "section": "",
     "text": "This is the homepage. New posts go in the posts/ folder and appear here automatically."
   },
   {
     "objectID": "index.html#what-you-can-write",
     "href": "index.html#what-you-can-write",
-    "title": "My Blog",
+    "title": "Notes of a nerd",
     "section": "What you can write",
     "text": "What you can write\n\nposts/*.qmd — plain Markdown posts (same YYYY-MM-DD-style frontmatter, folder-less)\nposts/*.ipynb — Jupyter notebooks, rendered natively (no conversion pipeline needed)"
   },
