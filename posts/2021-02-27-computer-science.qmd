@@ -1,0 +1,36 @@
+---
+title: "A critique of the term computer science"
+author: Lutz
+date: 2021-02-27
+categories: [computer science]
+description: "Who came up with this?"
+draft: true
+---
+
+Main source: https://en.wikipedia.org/wiki/Computer_science#Etymology
+
+- Not a _science_
+- Not _about_, but _with_ computers
+  - microscope science, telescope science, beaker science
+- Information Engineering/Informatik
+- solves arbitrary problems
+  - hence, encroaching on other fields like NLP, medicine, etc.
+  - "regina et ancilla", Queen and maid at the same time (Carl Friedrich Gauß, 1777-1855)
+- theoretical computer science
+  - overlap with maths
+- Chandler Bing (Friends): "Statistical analysis and Data reconfiguration"
+- Then what is _data science_?
+
+[@fein1959computers]
+
+[@tedre2006development]
+
+> turingineer, turologist, flow-charts-man, applied meta-mathematician, applied epistemologist, comptologist,
+> hypologist, and computologist. [...] comptology, hypology, and computology [...] datalogy, datamatics, and datamaton [...] computics
+
+> Computer science is the study of the phenomena surrounding computers.
+
+[@donoho2017datascience]
+
+::: {#refs}
+:::
